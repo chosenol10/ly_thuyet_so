@@ -389,20 +389,20 @@
 # # print(res) if res < 10**n else print(-1)
 
 
-# def phi(n):
-#     res = n
-#     for i in range(2, int(n ** 0.5) + 1):
-#         if n % i == 0:
-#             while (n % i == 0):
-#                 n //= i
-#             res  -= res//i
-#     if n  != 1:
-#         res -= res//n
-#     return res
+def phi(n):
+    res = n
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            while (n % i == 0):
+                n //= i
+            res  -= res//i
+    if n  != 1:
+        res -= res//n
+    return res
 
-# n = 10
-# for i in range(2, n + 1):
-#     print(phi(i), end=" ")
+n = 10
+for i in range(2, n + 1):
+    print(phi(i), end=" ")
 
 
 phi = [0] * 100001
@@ -421,3 +421,102 @@ sang()
 n = int(input())
 for i in range(1,n + 1):
     print(phi[i], end=" ")
+
+
+
+
+# ===========chap k cua n=============== #
+
+
+c = [[0] * 1001 for _ in range(1001)]
+
+def init():
+    for i in range(1001):
+        for j in range(i + 1):
+            if j == 0 or j == i:
+                c[i][j] = 1
+            else:
+                c[i][j] = c[i-1][j-1] + c[i - 1][j]
+                c[i][j] %= (10**9 + 7)
+
+init()
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    k = int(input())
+    print(c[n][k])
+
+
+# =======extended euclid algorithm======= #
+
+# (bản mở rộng của gcd)
+
+# ax + by = gcd(a,b)
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+x = 0 
+y = 0
+g = 0
+
+def extendedEuclid(a, b):
+    global x, y, g
+    if b == 0:
+        x = 1
+        y = 0 
+        g = a
+    else:
+        extendedEuclid(b, a % b)
+    #  tu dong 472 tuc la thua toan da ket thuc co ket qua la x1, y1: x, y
+        tmp = x     #luu x1 vao tmp
+        x = y   # x = y1    ma y thi la o duoi dang y1 
+        y = tmp - ((a//b) * y)     # y = x1 - ((a//b) * b)
+
+
+extendedEuclid(16,10)
+print(x, y, g)
+
+x = 0
+y = 0
+g = 0
+def extendedEuclid(a, b):
+    global x, y, g
+    if b == 0:
+        x = 1
+        y = 0 
+        g = a
+    else:
+        extendedEuclid(b, a % b)
+        
+        tmp = x
+        x = y 
+        y = tmp - (a//b) * y
+
+
+def invert_modul(a,m):
+    extendedEuclid(a,m)
+    if g != 1:
+        return False
+    
+    return (x % m + m ) % m
+
+
+# extendedEuclid(16,10)
+# print(x, y, g)
+
+def powmod(a,b,c):
+    res = 1
+    while b:
+        if b % 2 == 1:
+            res *= a
+            res %= c
+        a *= a
+        a %= c
+        b //= 2
+    return res
+
+
