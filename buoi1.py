@@ -1,12 +1,12 @@
-# # # # # #  greatest common divisor: ước chung lớn nhất
-# # # # # def gcd(a, b):
-# # # # #     if b == 0:
-# # # # #         return a
-# # # # #     return gcd(b, a % b)
+#  greatest common divisor: ước chung lớn nhất
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
 
-# # # # # # Least common multiple: bội chung nhỏ nhất
-# # # # # def lcm(a, b):
-# # # # #     return (a//(gcd(a, b)) * b)
+# Least common multiple: bội chung nhỏ nhất
+def lcm(a, b):
+    return (a//(gcd(a, b)) * b)
 
 # # # # # # a = list(map(int, input().split()))
 # # # # # # res = 0
@@ -43,14 +43,14 @@
 
 # # # # # # print (powmod(1032, 1000001, 10))
 
-# # # # # def fib0(n):
-# # # # #     f= [0]*(n + 1)
-# # # # #     f[0] = 0
-# # # # #     f[1] = 1
-# # # # #     for i in range(2, n + 1):
-# # # # #         f[i] = f[i - 1] + f[i - 2]
-# # # # #         f[i] %= MOD
-# # # # #     return f[n] 
+# def fib0(n):
+#     f= [0]*(n + 1)
+#     f[0] = 0
+#     f[1] = 1
+#     for i in range(2, n + 1):
+#         f[i] = f[i - 1] + f[i - 2]
+#         f[i] %= MOD
+#     return f[n] 
 
 
 # # # # # # __________LUỹ THỪA NHỊ PHÂN: BINARY EXPONENTIATION__________
@@ -65,15 +65,15 @@
 # # # # #     else:
 # # # # #         return  x * x
 
-# # # # # # cach 2: Binary Pow
-# # # # # def binpow2(a, b):
-# # # # #     res = 1
-# # # # #     while b != 0:
-# # # # #         if b % 2 == 1:
-# # # # #             res *= a
-# # # # #         b //= 2
-# # # # #         a * a
-# # # # #     return res
+# cach 2: Binary Pow
+def binpow2(a, b):
+    res = 1
+    while b != 0:
+        if b % 2 == 1:
+            res *= a
+        b //= 2
+        a * a
+    return res
 
 
 # # # # # # ______CSC, CSN______
@@ -83,12 +83,12 @@
 
 # # # # # #chỉnh hợp, tổ hợp , chrh hợp lập
 
-# # # # # def nCk(n, k):
-# # # # #     res = 1
-# # # # #     k = min(k, n - k)
-# # # # #     for i in range(k):
-# # # # #         res *= (n - i)
-# # # # #         res /= (i + 1)
+def nCk(n, k):
+    res = 1
+    k = min(k, n - k)
+    for i in range(k):
+        res *= (n - i)
+        res /= (i + 1)
 
 # # # # # # tìm x sao cho N! chia hết cho K^x (K là số nguyên tố), x là số lớn nhẩt
 
@@ -173,12 +173,12 @@
 # # # #     print(*ans, sep= " x ")
 
 
-# # # # def degree(n, k):
-# # # #     ans = 0
-# # # #     while n:
-# # # #         n //=k
-# # # #         ans +=n
-# # # #     return ans
+def degree(n, k):
+    ans = 0
+    while n:
+        n //=k
+        ans +=n
+    return ans
 # # # # print(degree(20,3))
 
 # # # # t = int(input())
@@ -208,14 +208,14 @@
 # # # # ________so hoan hao_________
 # # # # tong cac uoc cua 1 so bang chi no la so hoan hao
 
-# # # # def isHH(n):
-# # # #     tong = 1
-# # # #     for i in range(2, int(n ** 0.5) + 1):
-# # # #         if n % i == 0:
-# # # #             tong += i
-# # # #             if i != n//i:
-# # # #                 tong += n //i
-# # # #     return tong == n
+def isHH(n):
+    tong = 1
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            tong += i
+            if i != n//i:
+                tong += n //i
+    return tong == n
 
 # # # # t =int(input())
 # # # # for _ in range(t):
@@ -263,23 +263,23 @@
 
 # # # #                             ================================= #
 
-# # # # def nt(n):
-# # # #     for i in range(2, int(n ** 0.5) + 1):
-# # # #         if n % i == 0:
-# # # #             return False
-# # # #     return n > 1
+def nt(n):
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return n > 1
 
-# # # # HH = [0] * 100
-# # # # cnt = 0
-# # # # def init():
-# # # #     global cnt
-# # # #     cnt = 0
-# # # #     for p in range(2, 33):
-# # # #         if nt(p):
-# # # #             tmp = (1 << p) - 1
-# # # #             if nt(tmp):
-# # # #                 HH[cnt] = (1 << (p - 1)) * tmp
-# # # #                 cnt += 1
+HH = [0] * 100
+cnt = 0
+def init1():
+    global cnt
+    cnt = 0
+    for p in range(2, 33):
+        if nt(p):
+            tmp = (1 << p) - 1
+            if nt(tmp):
+                HH[cnt] = (1 << (p - 1)) * tmp
+                cnt += 1
 
 # # # # init()
 
@@ -299,13 +299,13 @@
 
 # # # # --------fibonaci--------
 
-# # # # fi = [0] * 100
+fi = [0] * 100
 
-# # # # def init():
-# # # #     fi[0] = 0
-# # # #     fi[1] = 1
-# # # #     for i in range(2, 100):
-# # # #         fi[i] = fi[i - 1] + fi[i - 2] 
+def init():
+    fi[0] = 0
+    fi[1] = 1
+    for i in range(2, 100):
+        fi[i] = fi[i - 1] + fi[i - 2] 
 # # # # init()
 
 # # # # for i in range(0, 100):
@@ -333,30 +333,30 @@
 # # #             # phi(n) = n. tich("uoc cua n") . (1 - 1 //i)
 # # # # code:
 
-# # # # def phi(n):
-# # # #     res = n
-# # # #     for i in range(2, int(n ** 0.5) + 1):
-# # # #         if n % i == 0:
-# # # #             while n % i == 0:
-# # # #                 n //= i
-# # # #             res -= res//i
-# # # #     if n != 1:
-# # # #         res -= res//n
-# # # #     return res
+# def phi(n):
+#     res = n
+#     for i in range(2, int(n ** 0.5) + 1):
+#         if n % i == 0:
+#             while n % i == 0:
+#                 n //= i
+#             res -= res//i
+#     if n != 1:
+#         res -= res//n
+#     return res
 
 # # # # print(phi(120))
     
 
-# # # def phi(n):
-# # #     res = n
-# # #     for i in range(2, int(n ** 0.5) + 1):
-# # #         if n % i== 0:
-# # #             while n % i == 0:
-# # #                 n //= i
-# # #             res -= res//i
-# # #     if n != 1:
-# # #         res -= res//n
-# # #     return res
+def phi(n):
+    res = n
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i== 0:
+            while n % i == 0:
+                n //= i
+            res -= res//i
+    if n != 1:
+        res -= res//n
+    return res
 
 # # # print(phi(120))
 
@@ -365,28 +365,28 @@
 # # # tim bncc cua so co n chu so 
 
 
-# # # x, y , z, n = map(int, input().split())
-# # # for i in range(pow(10, n -1), pow(10, n)):
-# # #     if i % x == 0 and i % y == 0 and i % z == 0:
-# # #         print(i)
-# # #     else:
-# # #         print(int(-1))
-# # #         break
+# x, y , z, n = map(int, input().split())
+# for i in range(pow(10, n -1), pow(10, n)):
+#     if i % x == 0 and i % y == 0 and i % z == 0:
+#         print(i)
+#     else:
+#         print(int(-1))
+#         break
 
-# # # toi uu hon
+# toi uu hon
 
-# # def gcd(a,b):
-# #     if b == 0:
-# #         return a
-# #     return gcd(b, a % b)
+def gcd(a,b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
 
-# # def lcm(a,b):
-# #     return a // gcd(a,b) * b
+def lcm(a,b):
+    return a // gcd(a,b) * b
 
-# # x, y , z, n = map(int, input().split())
-# # bcnn = lcm(x, lcm(y, z))
-# # res = ((10**(n-1) + bcnn - 1)// bcnn)*bcnn
-# # print(res) if res < 10**n else print(-1)
+x, y , z, n = map(int, input().split())
+bcnn = lcm(x, lcm(y, z))
+res = ((10**(n-1) + bcnn - 1)// bcnn)*bcnn
+print(res) if res < 10**n else print(-1)
 
 
 def phi(n):
